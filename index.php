@@ -13,12 +13,12 @@ body{
 	width:100%;
 }
 iframe{
-	height:100%;
+	height: calc(100% - 50px);
 	width:50%;
 }
 @media screen and (max-width: 769px) {
 	iframe{
-		height:50%;
+		height: calc(50% - 25px);
 		width:100%;
 	}
 	#sheep{
@@ -26,16 +26,19 @@ iframe{
 	}
 }
 </style>
+
+
 <?php
+if(!isset($_POST["q"])){
+	echo "<img id=\"sheep\" src=\"sheep.jpg\" /><br /><span style=\"font-size=5px\">artwork by Gaëlle Héaulme</span><h2>Phie search</h2>";
+}
+echo "<form action=\"\" method=\"post\"><input name=\"q\" type=\"text\" /><input value=\"wesh\" type=\"submit\" /></form>";
 if(isset($_POST["q"])){
 	if(isset($_GET["frame"]))
 		echo "<iframe frameBorder='0' src=\"https://framabee.org/?q=".urlencode($_POST["q"])."\"></iframe>";
 	else
 		echo "<iframe frameBorder='0' src=\"framabee.php?q=".urlencode($_POST["q"])."\"></iframe>";
 	echo "<iframe frameBorder='0' src=\"google.php?q=".urlencode($_POST["q"])."\"></iframe>";
-}else {
-
-	echo "<img id=\"sheep\" src=\"sheep.jpg\" /><br /><span style=\"font-size=5px\">artwork by Gaëlle Héaulme</span><h2>Phie search</h2><form action=\"\" method=\"post\"><input name=\"q\" type=\"text\" /><input value=\"wesh\" type=\"submit\" /></form>";
 }
 ?>
 </body>
