@@ -28,8 +28,11 @@ iframe{
 </style>
 <?php
 if(isset($_POST["q"])){
-	echo "<iframe frameBorder='0' src=\"framabee.php?q=".$_POST["q"]."\"></iframe>";
-	echo "<iframe frameBorder='0' src=\"google.php?q=".$_POST["q"]."\"></iframe>";
+	if(isset($_GET["frame"]))
+		echo "<iframe frameBorder='0' src=\"https://framabee.org/?q=".urlencode($_POST["q"])."\"></iframe>";
+	else
+		echo "<iframe frameBorder='0' src=\"framabee.php?q=".urlencode($_POST["q"])."\"></iframe>";
+	echo "<iframe frameBorder='0' src=\"google.php?q=".urlencode($_POST["q"])."\"></iframe>";
 }else {
 
 	echo "<img id=\"sheep\" src=\"sheep.jpg\" /><br /><span style=\"font-size=5px\">artwork by Gaëlle Héaulme</span><h2>Phie search</h2><form action=\"\" method=\"post\"><input name=\"q\" type=\"text\" /><input value=\"wesh\" type=\"submit\" /></form>";
